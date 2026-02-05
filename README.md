@@ -31,3 +31,11 @@ source /opt/ros/<distro>/setup.bash
 colcon build --symlink-install
 ```
 - If you use conda, prefer system Python for ROS2 builds.
+
+**Launch**
+
+- Build:
+```bash
+source install/setup.bash
+ros2 launch bringup bringup.launch.py
+```
