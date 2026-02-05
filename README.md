@@ -34,7 +34,6 @@ colcon build --symlink-install
 
 **Launch**
 
-- Build:
 ```bash
 source install/setup.bash
 ros2 launch bringup bringup.launch.py
