@@ -5,6 +5,7 @@
 2) GTSAM 4.1.1（从源码编译并安装，例如 /home/lzz/3rdparty/gtsam/install）
 3) libpcap-dev（rslidar_sdk 需要 pcap.h）
 4) nlohmann-json3-dev（fixposition SDK 需要）
+5) libbotan-2-dev（navtech radar 驱动需要）
 
 构建（建议在非 conda 环境下）：
 colcon build --symlink-install --cmake-args -DBUILD_TESTING=OFF
@@ -12,5 +13,4 @@ colcon build --symlink-install --cmake-args -DBUILD_TESTING=OFF
 权限与启动：
 chmod 777 /dev/ttyACM0
 ros2 launch bringup bringup.launch.py
-
 

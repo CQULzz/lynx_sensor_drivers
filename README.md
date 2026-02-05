@@ -15,6 +15,13 @@ Sensor drivers and ROS packages used for the Lynx platform.
 - Each package has its own README with dependencies and usage.
 - Generated artifacts (`build/`, `install/`, `log/`) are ignored.
 
+**Dependencies**
+- ROS2 Humble (`/opt/ros/humble`)
+- GTSAM 4.1.1 built from source (e.g. `/home/lzz/3rdparty/gtsam/install`)
+- `libpcap-dev` (required by `rslidar_sdk` for `pcap.h`)
+- `nlohmann-json3-dev` (required by the Fixposition SDK)
+- `libbotan-2-dev` (required by `nav_radar` in the Navtech driver)
+
 **Navtech Radar ROS2 Quick Start**
 - Workspace: `src/navtech-radar-SDK/ros/ros2`
 - Install deps: ROS2 for your OS, `rosdep`, and `libbotan-2-dev` (required by `nav_radar`)
