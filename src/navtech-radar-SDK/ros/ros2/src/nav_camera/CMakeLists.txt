@@ -19,6 +19,7 @@ find_package(navtech_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(CURL REQUIRED)
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
@@ -32,7 +33,7 @@ add_executable(video_capture_manager
 src/common/video_capture_manager.cpp
 src/common/video_capture_manager_main.cpp)
 
-target_link_libraries(video_capture_manager)
+target_link_libraries(video_capture_manager CURL::libcurl)
 ament_target_dependencies(
 video_capture_manager
 rclcpp
@@ -46,7 +47,7 @@ add_executable(camera_publisher
 src/publishers/camera_publisher_main.cpp
 src/publishers/camera_publisher.cpp)
 
-target_link_libraries(camera_publisher)
+target_link_libraries(camera_publisher CURL::libcurl)
 
 ament_target_dependencies(
 camera_publisher
@@ -61,7 +62,7 @@ add_executable(camera_subscriber
 src/subscribers/camera_subscriber_main.cpp
 src/subscribers/camera_subscriber.cpp)
 
-target_link_libraries(camera_subscriber)
+target_link_libraries(camera_subscriber CURL::libcurl)
 
 ament_target_dependencies(camera_subscriber
 rclcpp
@@ -75,7 +76,7 @@ add_executable(camera_subscriber_to_video
 src/subscribers/camera_subscriber_to_video_main.cpp
 src/subscribers/camera_subscriber_to_video.cpp)
 
-target_link_libraries(camera_subscriber_to_video)
+target_link_libraries(camera_subscriber_to_video CURL::libcurl)
 
 ament_target_dependencies(camera_subscriber_to_video
 rclcpp
