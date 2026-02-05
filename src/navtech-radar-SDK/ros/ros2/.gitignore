@@ -1,0 +1,12 @@
+.catkin_workspace
+build/
+devel/
+install/
+log/
+.trash/
+src/build/
+src/install/
+src/log/
+recordings/
+output_videos/
+output_data/

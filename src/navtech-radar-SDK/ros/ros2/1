@@ -1,0 +1,2 @@
+ros2 run nav_radar b_scan_publisher --ros-args --params-file /home/lynx/navtech-radar-SDK/ros/ros2/src/nav_radar/config/b_scan_publisher.yaml
+

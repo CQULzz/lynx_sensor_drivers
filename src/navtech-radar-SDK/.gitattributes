@@ -1,0 +1,3 @@
+# These bash scripts need to keep their unix line endings
+python_radar_client/install_prerequisites.sh text eol=lf
+python_radar_client/compile_protobuf_files.sh text eol=lf

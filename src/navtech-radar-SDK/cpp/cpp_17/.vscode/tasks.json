@@ -1,0 +1,131 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "make",
+            "options": {
+                "cwd": "${workspaceFolder}/build/linux/Debug"
+            },
+            "args": [
+                "-j",
+                "clean"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build (Linux)",
+            "type": "shell",
+            "command": "cmake",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "args": [
+                "--build", "${workspaceRoot}/build/linux/Debug",
+                "--config", "Debug",
+                "-j"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build (Windows)",
+            "type": "shell",
+            "command": "cmake",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "args": [
+                "--build", "${workspaceRoot}/build/win64",
+                "--config", "Debug",
+                "-j"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Configure (Linux)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-DPLATFORM=linux_x86_64",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-B", "${workspaceRoot}/build/linux/Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/src"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Configure (Windows)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-G", "Visual Studio 17 2022",
+                "-A", "x64",
+                "-T", "v141",
+                "-DPLATFORM=win64",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-B", "${workspaceRoot}/build/win64/Debug"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/src"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Configure and build (linux)",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Configure (Linux)",
+                "Build (Linux)"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Configure and build (Windows)",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Configure (Windows)",
+                "Build (Windows)"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

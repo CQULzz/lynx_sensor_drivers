@@ -1,0 +1,16 @@
+syntax = "proto2";
+package Navtech.Core.Configuration.Protobuf;
+
+import "radarmodel.proto";
+
+message Discovery {
+  optional RadarModel model             = 1;
+  optional int32  maxclientsallowed     = 2;
+  repeated string ipclients             = 3;
+  optional uint32 radarfeatures         = 4;
+  optional int32  staringmode           = 5;
+  optional int32  transmitterenabled    = 6;
+  optional float  rangeresolutionmetres = 7;
+  optional string onboardmacaddress     = 8;
+  optional bool extendedfeatureflags    = 9;
+}

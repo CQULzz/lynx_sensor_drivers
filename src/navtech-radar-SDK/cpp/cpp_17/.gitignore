@@ -1,0 +1,14 @@
+# Build output directory
+#
+[Bb]uild/
+
+# Third-party libraries
+#
+googletest
+
+# Build output artefacts
+!lib\win64\Protobuf\v3.19.4\bin
+
+# Miscellaneous files
+*.log
+*.csv

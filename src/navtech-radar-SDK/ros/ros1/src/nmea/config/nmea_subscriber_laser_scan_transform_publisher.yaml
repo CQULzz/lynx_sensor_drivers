@@ -1,0 +1,18 @@
+/nmea_subscriber_transform_publisher:
+  ros__parameters:
+    child_topic: 'laser_frame'
+    parent_topic: 'map'
+    qos_overrides:
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+      /tf:
+        publisher:
+          depth: 100
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+    use_sim_time: false
