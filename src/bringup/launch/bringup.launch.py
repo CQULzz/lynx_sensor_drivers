@@ -3,6 +3,7 @@ from launch.actions import ExecuteProcess, RegisterEventHandler, IncludeLaunchDe
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import AnyLaunchDescriptionSource
 from launch_ros.substitutions import FindPackageShare
+from launch_ros.actions import Node
 
 from launch.substitutions import PathJoinSubstitution
 
@@ -39,10 +40,18 @@ def generate_launch_description():
         )
     )
 
+    # 4) nav_radar b_scan_publisher with params file
+    b_scan_publisher = Node(
+        package="nav_radar",
+        executable="b_scan_publisher",
+        output="screen",
+        parameters=["/home/lynx/navtech-radar-SDK/ros/ros2/src/nav_radar/config/b_scan_publisher.yaml"],
+    )
+
     return LaunchDescription([
         fixposition,
         rslidar,
         chmod_tty,
         start_tm_imu_after_chmod,
+        b_scan_publisher,
     ])
-
