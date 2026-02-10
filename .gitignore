@@ -1,0 +1,24 @@
+# Colcon / ROS2 build artifacts
+build/
+install/
+log/
+
+# CMake / compile database
+compile_commands.json
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+Makefile
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+*.bak
