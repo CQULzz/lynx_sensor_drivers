@@ -7,6 +7,8 @@ EasyProfile eP(&eOD);
 #define DEBUG_MODE_PRINT_TIMER_MS_  (10000)  // 10 seconds
 #endif
 
+constexpr float kGravityMps2 = 9.794f;  // 1 g in m/s^2 for this sensor
+
 TMSerial::TMSerial() : rclcpp::Node("tm_imu")
 {
     // Declare node's parameters default value 
@@ -154,9 +156,10 @@ bool TMSerial::OnSerialRX()
                     imu_data_msg.angular_velocity.y =  gyro_y;
                     imu_data_msg.angular_velocity.z =  gyro_z;
 
-                    imu_data_msg.linear_acceleration.x = acc_x*9.794; 
-                    imu_data_msg.linear_acceleration.y = acc_y*9.794;
-                    imu_data_msg.linear_acceleration.z = acc_z*9.794;
+                    // Only flip Z to match expected sign.
+                    imu_data_msg.linear_acceleration.x = acc_x * kGravityMps2;
+                    imu_data_msg.linear_acceleration.y = acc_y * kGravityMps2;
+                    imu_data_msg.linear_acceleration.z = -acc_z * kGravityMps2;
 
                     imu_data_mag_msg.magnetic_field.x = mag_x;
                     imu_data_mag_msg.magnetic_field.y = mag_y;
@@ -249,9 +252,10 @@ bool TMSerial::OnSerialRX()
                     imu_data_msg.angular_velocity.y =  wy;
                     imu_data_msg.angular_velocity.z =  wz;
 
-                    imu_data_msg.linear_acceleration.x = ax; 
+                    // Only flip Z to match expected sign.
+                    imu_data_msg.linear_acceleration.x = ax;
                     imu_data_msg.linear_acceleration.y = ay;
-                    imu_data_msg.linear_acceleration.z = az;
+                    imu_data_msg.linear_acceleration.z = -az;
 
                     imu_data_msg.orientation.x = q1;
                     imu_data_msg.orientation.y = q2;
